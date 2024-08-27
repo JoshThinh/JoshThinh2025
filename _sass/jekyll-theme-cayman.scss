@@ -1,7 +1,21 @@
 @import "normalize";
 @import "rouge-github";
 @import "variables";
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+$body-bg-color: #0a0a0a;
+$body-text-color: #cfcfcf;
+$body-link-color: #00f5ff;
+$header-bg-color: #141414;
+$header-bg-color-secondary: #1a1a1a;
+$header-heading-color: #00f5ff;
+$section-headings-color: #ff00ff;
+$code-text-color: #00ff99;
+$code-bg-color: #1c1c1c;
+$border-color: #292929;
+$table-border-color: #383838;
+$blockquote-text-color: #00f5ff;
+$hr-border-color: #383838;
 
 @mixin large {
   @media screen and (min-width: #{$large-breakpoint}) {
@@ -28,10 +42,11 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: $body-text-color;
+  background-color: $body-bg-color;
 }
 
 #skip-to-content {
@@ -47,36 +62,38 @@ body {
     left: 10px;
     height: auto;
     width: auto;
-    background: invert($body-link-color);
-    outline: thick solid invert($body-link-color);
+    background: #00f5ff;
+    color: #0a0a0a;
+    outline: thick solid #ff00ff;
   }
 }
 
 a {
   color: $body-link-color;
   text-decoration: none;
+  transition: color 0.3s;
 
   &:hover {
     text-decoration: underline;
+    color: #ff00ff;
   }
 }
 
 .btn {
   display: inline-block;
   margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
+  color: #00f5ff;
+  background-color: rgba(255, 0, 255, 0.1);
+  border-color: #ff00ff;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-radius: 0.3rem;
-  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  transition: all 0.3s;
 
   &:hover {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
+    color: #ff00ff;
+    background-color: rgba(0, 245, 255, 0.1);
+    border-color: #00f5ff;
   }
 
   + .btn {
@@ -110,6 +127,7 @@ a {
   text-align: center;
   background-color: $header-bg-color;
   background-image: linear-gradient(120deg, $header-bg-color-secondary, $header-bg-color);
+  box-shadow: 0 4px 12px rgba(0, 245, 255, 0.3);
 
   @include large {
     padding: 5rem 6rem;
@@ -127,40 +145,45 @@ a {
 .project-name {
   margin-top: 0;
   margin-bottom: 0.1rem;
+  font-family: 'Orbitron', sans-serif;
 
   @include large {
-    font-size: 3.25rem;
+    font-size: 3.5rem;
   }
 
   @include medium {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
 
   @include small {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 }
 
 .project-tagline {
   margin-bottom: 2rem;
   font-weight: normal;
-  opacity: 0.7;
+  opacity: 0.8;
 
   @include large {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   @include medium {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
   }
 
   @include small {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
 .main-content {
   word-wrap: break-word;
+  background-color: #141414;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 245, 255, 0.1);
 
   :first-child {
     margin-top: 0;
@@ -170,7 +193,7 @@ a {
     max-width: 64rem;
     padding: 2rem 6rem;
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   @include medium {
@@ -184,17 +207,12 @@ a {
   }
   
   kbd {
-    background-color: #fafbfc;
-    border: 1px solid #c6cbd1;
-    border-bottom-color: #959da5;
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #959da5;
-    color: #444d56;
-    display: inline-block;
-    font-size: 11px;
-    line-height: 10px;
+    background-color: #1c1c1c;
+    border: 1px solid #383838;
+    color: #00ff99;
     padding: 3px 5px;
-    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
   }
 
   img {
@@ -219,8 +237,8 @@ a {
 
   code {
     padding: 2px 4px;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 0.9rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
     color: $code-text-color;
     background-color: $code-bg-color;
     border-radius: 0.3rem;
@@ -228,122 +246,15 @@ a {
 
   pre {
     padding: 0.8rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: 'Roboto Mono', monospace;
     color: $code-text-color;
-    word-wrap: normal;
     background-color: $code-bg-color;
-    border: solid 1px $border-color;
+    border: 1px solid $border-color;
     border-radius: 0.3rem;
-
-    > code {
-      padding: 0;
-      margin: 0;
-      font-size: 0.9rem;
-      color: $code-text-color;
-      word-break: normal;
-      white-space: pre;
-      background: transparent;
-      border: 0;
-    }
   }
-
-  .highlight {
-    margin-bottom: 1rem;
-
-    pre {
-      margin-bottom: 0;
-      word-break: normal;
-    }
-  }
-
-  .highlight pre,
-  pre {
-    padding: 0.8rem;
-    overflow: auto;
-    font-size: 0.9rem;
-    line-height: 1.45;
-    border-radius: 0.3rem;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  pre code,
-  pre tt {
-    display: inline;
-    max-width: initial;
-    padding: 0;
-    margin: 0;
-    overflow: initial;
-    line-height: inherit;
-    word-wrap: normal;
-    background-color: transparent;
-    border: 0;
-
-    &:before,
-    &:after {
-      content: normal;
-    }
-  }
-
-  ul,
-  ol {
-    margin-top: 0;
-  }
-
-  blockquote {
-    padding: 0 1rem;
-    margin-left: 0;
-    color: $blockquote-text-color;
-    border-left: 0.3rem solid $border-color;
-
-    > :first-child {
-      margin-top: 0;
-    }
-
-    > :last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  table {
-    display: block;
-    width: 100%;
-    overflow: auto;
-    word-break: normal;
-    word-break: keep-all; // For Firefox to horizontally scroll wider tables.
-    -webkit-overflow-scrolling: touch;
-
-    th {
-      font-weight: bold;
-    }
-
-    th,
-    td {
-      padding: 0.5rem 1rem;
-      border: 1px solid $table-border-color;
-    }
-  }
-
-  dl {
-    padding: 0;
-
-    dt {
-      padding: 0;
-      margin-top: 1rem;
-      font-size: 1rem;
-      font-weight: bold;
-    }
-
-    dd {
-      padding: 0;
-      margin-bottom: 1rem;
-    }
-  }
-
+  
   hr {
     height: 2px;
-    padding: 0;
     margin: 1rem 0;
     background-color: $hr-border-color;
     border: 0;
@@ -354,6 +265,7 @@ a {
   padding-top: 2rem;
   margin-top: 2rem;
   border-top: solid 1px $hr-border-color;
+  background-color: #1a1a1a;
 
   @include large {
     font-size: 1rem;
@@ -371,6 +283,7 @@ a {
 .site-footer-owner {
   display: block;
   font-weight: bold;
+  color: $body-link-color;
 }
 
 .site-footer-credits {
