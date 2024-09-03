@@ -1,16 +1,143 @@
-
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
-{% if site.remote_theme contains 'minima' %}
-  {%- include theme/minima/base.html -%}
-{% elsif site.remote_theme contains 'midnight' %}
-  {%- include theme/midnight/base.html -%}
-{% elsif site.remote_theme contains 'dinky' %}
-  {%- include theme/dinky/base.html -%}
-{% elsif site.remote_theme contains 'time-machine' %}
-  {%- include theme/time-machine/base.html -%}
-{% elsif site.remote_theme contains 'cayman' %}
-  {%- include theme/cayman/base.html -%}
-{% endif %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Car Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            background: black; /* Ensure the car stands out */
+        }
+
+        #car {
+            width: 200px; /* Size of the car */
+            height: 100px; /* Size of the car */
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            background: linear-gradient(135deg, #00bcd4, #00e5ff); /* Initial futuristic color design */
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            transition: background 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+            transform: rotate(-5deg); /* Slight rotation for effect */
+        }
+
+        #car::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            width: 40px;
+            height: 20px;
+            background: gray;
+            border-radius: 50%;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Inner shadow */
+        }
+
+        #car::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 20px;
+            width: 40px;
+            height: 20px;
+            background: gray;
+            border-radius: 50%;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Inner shadow */
+        }
+
+        #message {
+            display: none;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for message text */
+        }
+    </style>
+</head>
+
+<body>
+    {% if site.remote_theme contains 'minima' %}
+      {%- include theme/minima/base.html -%}
+    {% elsif site.remote_theme contains 'midnight' %}
+      {%- include theme/midnight/base.html -%}
+    {% elsif site.remote_theme contains 'dinky' %}
+      {%- include theme/dinky/base.html -%}
+    {% elsif site.remote_theme contains 'time-machine' %}
+      {%- include theme/time-machine/base.html -%}
+    {% elsif site.remote_theme contains 'cayman' %}
+      {%- include theme/cayman/base.html -%}
+    {% endif %}
+
+    <div id="car">
+        <span id="message">Code!</span>
+    </div>
+
+    <script>
+        // Variables to keep track of the car position and movement direction
+        let car = document.getElementById('car');
+        let message = document.getElementById('message');
+        let position = { x: 0, y: 0 };
+        let velocity = { x: 1, y: 1 }; // Slower speed
+
+        // Array of colors for the car
+        const colors = [
+            'linear-gradient(135deg, #00bcd4, #00e5ff)', // Futuristic color
+            'linear-gradient(135deg, #ff4081, #f50057)', // Retro color
+            'linear-gradient(135deg, #4caf50, #81c784)', // Green color
+            'linear-gradient(135deg, #ffeb3b, #fdd835)', // Yellow color
+            'linear-gradient(135deg, #673ab7, #512da8)'  // Purple color
+        ];
+
+        let currentColorIndex = 0;
+
+        // Function to move the car
+        function moveCar() {
+            position.x += velocity.x;
+            position.y += velocity.y;
+
+            // Reverse direction when the car hits the edge
+            if (position.x >= window.innerWidth - car.clientWidth || position.x <= 0) {
+                velocity.x *= -1;
+            }
+            if (position.y >= window.innerHeight - car.clientHeight || position.y <= 0) {
+                velocity.y *= -1;
+            }
+
+            car.style.left = position.x + 'px';
+            car.style.top = position.y + 'px';
+
+            requestAnimationFrame(moveCar);
+        }
+
+        // Start the animation
+        moveCar();
+
+        // Click event to show the message and change the car's design
+        car.addEventListener('click', function() {
+            message.style.display = 'block'; // Show the message
+            setTimeout(function() {
+                message.style.display = 'none'; // Hide the message after 1 second
+            }, 1000);
+
+            // Change the car color
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+            car.style.background = colors[currentColorIndex];
+        });
+    </script>
+</body>
+
 </html>
