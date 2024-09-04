@@ -2,8 +2,8 @@ title: Nighthawk Pages
 description: "Class of 2025"
 owner_name: Joshua Thinh
 github_username: JoshThinh
-github_repo: "Joshua_2025" 
-baseurl: "/Joshua_2025"
+github_repo: "JoshThinh2025" 
+baseurl: "/JoshThinh2025"
 future: true
 remote_theme: jekyll/minima
 minima:
