@@ -141,7 +141,6 @@ I am very excited to take this class and delve deeper into computer science.
     - Photography
     - CSA
     - Civics
-![Friends image]({{site.baseurl}}/images/friendphoto.png)
 
 <!-- This is where the cycling photo box for Friends will be displayed -->
 <div class="photo-container">
@@ -194,7 +193,8 @@ I am very excited to take this class and delve deeper into computer science.
     // 4. Define the images to cycle through for the Friends photo box
     var friendsPhotoImages = [
         "{{site.baseurl}}/images/vbback.PNG", 
-        "{{site.baseurl}}/images/vbspike.PNG"
+        "{{site.baseurl}}/images/vbspike.PNG",
+        "{{site.baseurl}}/images/friendphoto.png"
     ];
 
     var friendsPhotoBox = document.getElementById("friends_photo_box");
