@@ -1,3 +1,5 @@
+github: [metadata]
+
 title: Nighthawk Pages 
 description: "Class of 2025"
 owner_name: Joshua Thinh
@@ -5,7 +7,7 @@ github_username: JoshThinh
 github_repo: "JoshThinh2025" 
 baseurl: "/JoshThinh2025"
 future: true
-remote_theme: jekyll/minima
+remote_theme: pages-themes/cayman@v0.2.0
 minima:
   skin: dark
   social_links:
@@ -17,10 +19,13 @@ remote_theme: pages-themes/cayman@v0.2.0
 # remote_theme: pages-themes/dinky@v0.2.0
 # remote_theme: pages-themes/minimal@v0.2.0
 # remote_theme: pages-themes/time-machine@v0.2.0
+# remote_theme: jekyll/minima
 plugins:
   - jekyll-remote-theme
 header_pages:
   - navigation/blog.md
   - navigation/search.md
   - navigation/about.md
+  - navigation/game.md
   - README4YML.md
+  
