@@ -27,5 +27,6 @@ header_pages:
   - navigation/search.md
   - navigation/about.md
   - navigation/game.md
+  - navigation/cargame.md
   - README4YML.md
   
