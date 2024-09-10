@@ -262,6 +262,35 @@ a {
     background-color: $hr-border-color;
     border: 0;
   }
+
+  .car-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; // Adjust size as needed
+  }
+
+  .emoji-car {
+    font-size: 5rem; // Adjust size as needed
+    cursor: pointer;
+    transition: transform 0.3s ease; // Add transition for smooth effect
+
+    &:hover {
+      transform: scale(1.1); // Slightly enlarge the car on hover
+    }
+  }
+
+  .message {
+    display: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for message text */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .site-footer {
