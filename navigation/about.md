@@ -4,44 +4,50 @@ title: About
 permalink: /about/
 ---
 
-
 <style>
+    /* General styles for images */
     img {
         display: block;
-        margin: 20px auto; /* Centers the image and adds space around it */
-        max-width: 300px; /* Adjust this size as needed */
-        height: auto; /* Keeps the image's aspect ratio */
+        margin: 0 auto; /* Centers the image horizontally */
+        max-width: 100%; /* Ensures the image does not exceed container width */
+        height: auto; /* Maintains aspect ratio */
         border: 7px solid #00f5ff; /* Adds a solid border with a specified color */
         border-radius: 10px; /* Optional: Adds rounded corners to the border */
     }
 
+    /* Style for the photo container */
     .photo-container {
         position: relative;
-        width: 300px; /* Adjust width as needed */
-        height: 200px; /* Adjust height as needed */
-        overflow: hidden; /* Hide overflowing content */
+        width: 300px; /* Container width */
+        height: 200px; /* Container height */
+        overflow: hidden; /* Hides any overflow content */
         margin: 20px auto;
+        display: flex;
+        align-items: center; /* Centers images vertically */
+        justify-content: center; /* Centers images horizontally */
+        background: #141414; /* Optional: Background color for better contrast */
     }
 
     .photo-box {
+        position: relative;
         width: 100%;
         height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        overflow: hidden;
+        display: flex;
+        align-items: center; /* Centers images vertically */
+        justify-content: center; /* Centers images horizontally */
     }
 
     .photo-box img {
         position: absolute;
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Cover the box without distortion */
+        object-fit: contain; /* Ensures images fit within the container while maintaining aspect ratio */
         transition: opacity 1s ease-in-out; /* Smooth transition for fading */
+        opacity: 0; /* Hide all images initially */
     }
 
-    .photo-box img.hidden {
-        opacity: 0;
+    .photo-box img.visible {
+        opacity: 1; /* Show the image with the 'visible' class */
     }
 
     .thin-box {
@@ -54,11 +60,11 @@ permalink: /about/
     }
 
     .thin-box.left {
-        left: -30px; /* Position the left boxes outside the container */
+        left: -30px; /* Position the left box outside the container */
     }
 
     .thin-box.right {
-        right: -30px; /* Position the right boxes outside the container */
+        right: -30px; /* Position the right box outside the container */
     }
 
     /* Animation for thin boxes */
@@ -98,7 +104,7 @@ permalink: /about/
     .grid-item img {
         width: 100%;
         height: 100px; /* Fixed height for uniformity */
-        object-fit: contain; /* Ensure the image fits within the fixed height */
+        object-fit: contain; /* Ensures images fit within the fixed height */
     }
 
     .grid-item p {
@@ -118,10 +124,10 @@ I am very excited to take this class and delve deeper into computer science.
     - Father
     - Brother
     - Little sister
-    
-<!-- This is where the cycling photo box will be displayed -->
+
+<!-- This is where the cycling photo box for Family will be displayed -->
 <div class="photo-container">
-    <div class="photo-box" id="photo_box">
+    <div class="photo-box" id="family_photo_box">
         <!-- Images will be dynamically added here -->
     </div>
     <!-- Thin boxes on the left and right -->
@@ -137,6 +143,16 @@ I am very excited to take this class and delve deeper into computer science.
     - Civics
 ![Friends image]({{site.baseurl}}/images/friendphoto.png)
 
+<!-- This is where the cycling photo box for Friends will be displayed -->
+<div class="photo-container">
+    <div class="photo-box" id="friends_photo_box">
+        <!-- Images will be dynamically added here -->
+    </div>
+    <!-- Thin boxes on the left and right -->
+    <div class="thin-box left move-left"></div>
+    <div class="thin-box right move-right"></div>
+</div>
+
 ### Flags
 <!-- This grid_container class is for the CSS styling, the id is for JavaScript connection -->
 <div class="grid-container" id="grid_container">
@@ -144,45 +160,76 @@ I am very excited to take this class and delve deeper into computer science.
 </div>
 
 <script>
-    // 1. Define the images to cycle through for the photo box
-    var photoImages = [
+    // 1. Define the images to cycle through for the Family photo box
+    var familyPhotoImages = [
         "{{site.baseurl}}/images/familyphoto.png",
-        "{{site.baseurl}}/images/friendphoto.png"
+        "{{site.baseurl}}/images/meandally.png"
     ];
 
-    var photoBox = document.getElementById("photo_box");
+    var familyPhotoBox = document.getElementById("family_photo_box");
 
-    // 2. Create img elements for each photo and add to the photo box
-    photoImages.forEach((src, index) => {
+    // 2. Create img elements for each photo and add to the Family photo box
+    familyPhotoImages.forEach((src, index) => {
         var img = document.createElement("img");
         img.src = src;
-        img.className = index === 0 ? "" : "hidden"; // Show the first image initially
-        photoBox.appendChild(img);
+        img.className = index === 0 ? "visible" : ""; // Show the first image initially
+        familyPhotoBox.appendChild(img);
     });
 
-    // 3. Function to cycle through images in the photo box
-    function cyclePhotos() {
+    // 3. Function to cycle through images in the Family photo box
+    function cycleFamilyPhotos() {
         var current = 0;
-        var images = photoBox.querySelectorAll("img");
+        var images = familyPhotoBox.querySelectorAll("img");
         
         setInterval(() => {
-            images[current].classList.add("hidden");
+            images[current].classList.remove("visible");
             current = (current + 1) % images.length;
-            images[current].classList.remove("hidden");
+            images[current].classList.add("visible");
         }, 3000); // Change image every 3 seconds
     }
 
-    // Start cycling photos
-    cyclePhotos();
+    // Start cycling Family photos
+    cycleFamilyPhotos();
 
-    // 4. Define the flags data for the grid
+    // 4. Define the images to cycle through for the Friends photo box
+    var friendsPhotoImages = [
+        "{{site.baseurl}}/images/vbback.PNG", 
+        "{{site.baseurl}}/images/vbspike.PNG"
+    ];
+
+    var friendsPhotoBox = document.getElementById("friends_photo_box");
+
+    // 5. Create img elements for each photo and add to the Friends photo box
+    friendsPhotoImages.forEach((src, index) => {
+        var img = document.createElement("img");
+        img.src = src;
+        img.className = index === 0 ? "visible" : ""; // Show the first image initially
+        friendsPhotoBox.appendChild(img);
+    });
+
+    // 6. Function to cycle through images in the Friends photo box
+    function cycleFriendsPhotos() {
+        var current = 0;
+        var images = friendsPhotoBox.querySelectorAll("img");
+        
+        setInterval(() => {
+            images[current].classList.remove("visible");
+            current = (current + 1) % images.length;
+            images[current].classList.add("visible");
+        }, 3000); // Change image every 3 seconds
+    }
+
+    // Start cycling Friends photos
+    cycleFriendsPhotos();
+
+    // 7. Define the flags data for the grid
     var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
     var living_in_the_world = [
         {"flag": "0/01/Flag_of_California.svg", "description": "California - lived here forever", "greeting": "Love the food"},
         {"flag": "c/cf/Flag_of_Canada.svg", "description": "Canada - have a citizenship", "greeting": "Nicest people"}
     ]; 
     
-    // 5. Grid dynamic generation for each data row
+    // 8. Grid dynamic generation for each data row
     var container = document.getElementById("grid_container");
     for (const location of living_in_the_world) {
         // Create a "div" with "class grid-item" for each row
