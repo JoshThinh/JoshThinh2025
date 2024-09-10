@@ -1,0 +1,64 @@
+---
+layout: page 
+---
+
+<!-- This inserts content from the page using this layout -->
+{{ content | markdownify }}
+
+<!-- Your game logic goes here -->
+
+<div id="game-container">
+    <h1>Welcome to the Puzzle Game</h1>
+    <p>Enter the passcode to start:</p>
+    <input type="text" id="passcode" placeholder="Enter passcode">
+    <button onclick="startGame()">Submit</button>
+
+    <div id="puzzle" style="display:none;">
+        <p>Solve this puzzle before the time runs out!</p>
+        <!-- Puzzle details go here -->
+        <button onclick="checkSolution()">Submit Solution</button>
+    </div>
+
+    <div id="congrats" style="display:none;">
+        <h2>Congratulations! You solved the puzzle!</h2>
+        <p>Your time was <span id="time-taken"></span> seconds!</p>
+    </div>
+
+    <div id="countdown" style="display:none;">
+        <p>Time remaining: <span id="time-remaining">60</span> seconds</p>
+    </div>
+</div>
+
+<script>
+    function startGame() {
+        var passcode = document.getElementById('passcode').value;
+        if (passcode === 'yourpasscode') {
+            document.getElementById('puzzle').style.display = 'block';
+            document.getElementById('countdown').style.display = 'block';
+            startCountdown();
+        } else {
+            alert('Incorrect passcode. Try again.');
+        }
+    }
+
+    function startCountdown() {
+        var timeRemaining = 60;
+        var countdownElement = document.getElementById('time-remaining');
+        var interval = setInterval(function() {
+            timeRemaining--;
+            countdownElement.textContent = timeRemaining;
+            if (timeRemaining <= 0) {
+                clearInterval(interval);
+                alert('Time is up!');
+                // Add logic for time out here
+            }
+        }, 1000);
+    }
+
+    function checkSolution() {
+        // Add your puzzle solution logic here
+        document.getElementById('puzzle').style.display = 'none';
+        document.getElementById('congrats').style.display = 'block';
+        document.getElementById('time-taken').textContent = 60 - parseInt(document.getElementById('time-remaining').textContent);
+    }
+</script>
