@@ -4,67 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Car Animation</title>
+    <title>Emoji Car Animation</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            /*overflow: hidden;*/ /* Prevent scrollbars */
-            background: black; /* Ensure the car stands out */
+            font-family: 'Orbitron', sans-serif;
+            background-color: #0a0a0a;
         }
 
         #car {
-            width: 200px; /* Size of the car */
-            height: 100px; /* Size of the car */
             position: absolute;
-            top: 0;
-            left: 0;
+            font-size: 5rem; /* Adjust size for emoji */
             cursor: pointer;
-            background: linear-gradient(135deg, #00bcd4, #00e5ff); /* Initial futuristic color design */
-            border-radius: 15px;
+            color: #00ff99; /* Adjust color for better visibility */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            line-height: 100px;
-            transition: background 0.5s ease, transform 0.5s ease; /* Smooth transition */
+            border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
-            transform: rotate(-5deg); /* Slight rotation for effect */
         }
 
         #car::before {
-            content: '';
+            content: 'Code!';
             position: absolute;
-            bottom: -15px;
-            left: 20px;
-            width: 40px;
-            height: 20px;
-            background: gray;
-            border-radius: 50%;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Inner shadow */
-        }
-
-        #car::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            right: 20px;
-            width: 40px;
-            height: 20px;
-            background: gray;
-            border-radius: 50%;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Inner shadow */
-        }
-
-        #message {
-            display: none;
+            font-size: 1.5rem;
             color: white;
-            font-size: 24px;
-            font-weight: bold;
+            display: none; /* Initially hidden */
+            transition: opacity 0.3s ease;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for message text */
+        }
+
+        #car.show-code::before {
+            display: block;
+            opacity: 1;
         }
     </style>
 </head>
@@ -82,34 +55,22 @@
       {%- include theme/cayman/base.html -%}
     {% endif %}
 
-    <div id="car">
-        <span id="message">Code!</span>
+    <div class="car-container">
+        <div id="car">🚗</div>
     </div>
 
     <script>
-        // Variables to keep track of the car position and movement direction
         let car = document.getElementById('car');
-        let message = document.getElementById('message');
         let position = { x: 0, y: 0 };
         let velocity = { x: 1, y: 1 }; // Slower speed
 
-        // Array of colors for the car
-        const colors = [
-            'linear-gradient(135deg, #00bcd4, #00e5ff)', // Futuristic color
-            'linear-gradient(135deg, #ff4081, #f50057)', // Retro color
-            'linear-gradient(135deg, #4caf50, #81c784)', // Green color
-            'linear-gradient(135deg, #ffeb3b, #fdd835)', // Yellow color
-            'linear-gradient(135deg, #673ab7, #512da8)'  // Purple color
-        ];
+        const emojis = ['🚗', '🚙', '🚐', '🚌', '🚕'];
+        let currentEmojiIndex = 0;
 
-        let currentColorIndex = 0;
-
-        // Function to move the car
         function moveCar() {
             position.x += velocity.x;
             position.y += velocity.y;
 
-            // Reverse direction when the car hits the edge
             if (position.x >= window.innerWidth - car.clientWidth || position.x <= 0) {
                 velocity.x *= -1;
             }
@@ -123,19 +84,19 @@
             requestAnimationFrame(moveCar);
         }
 
-        // Start the animation
         moveCar();
 
-        // Click event to show the message and change the car's design
         car.addEventListener('click', function() {
-            message.style.display = 'block'; // Show the message
-            setTimeout(function() {
-                message.style.display = 'none'; // Hide the message after 1 second
-            }, 1000);
+            car.textContent = emojis[currentEmojiIndex];
+            currentEmojiIndex = (currentEmojiIndex + 1) % emojis.length;
 
-            // Change the car color
-            currentColorIndex = (currentColorIndex + 1) % colors.length;
-            car.style.background = colors[currentColorIndex];
+            // Show the "Code!" message
+            car.classList.add('show-code');
+
+            // Hide the message after 1 second
+            setTimeout(function() {
+                car.classList.remove('show-code');
+            }, 1000);
         });
     </script>
 </body>
