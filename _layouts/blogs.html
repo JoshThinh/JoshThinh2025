@@ -16,7 +16,7 @@ layout: page
   {% endif %}
 {% endfor %}
 
-<!-- Group posts by year -->
+<!-- Group posts by year and month -->
 {% assign posts_by_year = posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 
 <!-- Create dropdown for each year -->
@@ -25,14 +25,21 @@ layout: page
   <div class="dropdown">
     <button class="dropdown-btn">{{ year.name }}</button>
     <div class="dropdown-content">
+      
+      <!-- Group posts by month within each year -->
+      {% assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" %}
+      
+      <!-- Display month titles and posts -->
+      {% for month in posts_by_month %}
+      <h3>{{ month.name }}</h3> <!-- Month title -->
       <ul class="post-list">
-        {% for post in year.items %}
+        {% for post in month.items %}
         <li>
-          <!-- This file can be found in _includes -->
           {%- include post_list_image_card.html -%}
         </li>
         {% endfor %}
       </ul>
+      {% endfor %}
     </div>
   </div>
   {% endfor %}
@@ -99,6 +106,13 @@ layout: page
 /* Show dropdown content on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* Month heading styles */
+.dropdown-content h3 {
+  color: #00f5ff;
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 5px;
 }
 
 /* Adjustments for accessibility and responsiveness */
