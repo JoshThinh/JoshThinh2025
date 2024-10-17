@@ -68,14 +68,32 @@ body {
   }
 }
 
+// a {
+//  color: $body-link-color;
+//  text-decoration: none;
+//  transition: color 0.3s;
+//  border-color: #00ff99;
+
+//  &:hover {
+ //   text-decoration: underline;
+   // color: #ff00ff;
+ // }
+//}
 a {
   color: $body-link-color;
   text-decoration: none;
-  transition: color 0.3s;
+  padding: 0.5rem 1rem;  // Add padding inside the link
+  border: 2px solid $body-link-color;  // Add border to the link
+  border-radius: 0.3rem;  // Rounded corners
+  margin: 0.5rem;  // Space around the links
+  display: inline-block;  // Makes the link behave like a button
+  transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: #ff00ff;
+    background-color: rgba(0, 245, 255, 0.1);  // Background change on hover
+    border-color: #00ff99;  // Border color change on hover
   }
 }
 
@@ -263,22 +281,22 @@ a {
     border: 0;
   }
 
-  .car-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px; // Adjust size as needed
-  }
+ // .car-container {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: 200px; // Adjust size as needed
+  // }
 
-  .emoji-car {
-    font-size: 5rem; // Adjust size as needed
-    cursor: pointer;
-    transition: transform 0.3s ease; // Add transition for smooth effect
+  // .emoji-car {
+    // font-size: 5rem; // Adjust size as needed
+    // cursor: pointer;
+    // transition: transform 0.3s ease; // Add transition for smooth effect
 
-    &:hover {
-      transform: scale(1.1); // Slightly enlarge the car on hover
-    }
-  }
+   // &:hover {
+     // transform: scale(1.1); // Slightly enlarge the car on hover
+   // }
+  //v}
 
   .message {
     display: none;
