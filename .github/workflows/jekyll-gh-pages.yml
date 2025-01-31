@@ -8,11 +8,14 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -23,31 +26,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4  # Ensure you're using the latest version of checkout action
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1  # The latest version of ruby/setup-ruby is v1, so keep this as-is
-        with:
-          ruby-version: '3.1' # Set this to your desired Ruby version
-          bundler-cache: true
-      - name: Install Jekyll and dependencies
-        run: |
-          gem install bundler
-          bundle install
-      - name: Install Python dependencies
-        run: |
-          python -m venv venv  # Create virtual environment
-          source venv/bin/activate  # Activate the virtual environment
-          pip install -r requirements.txt  # Install Python packages
-
-      - name: Execute conversion script
-        run: |
-          source venv/bin/activate  # Activate virtual environment
-          python scripts/convert_notebooks.py  # Run your Python script
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
       - name: Build with Jekyll
-        run: |
-          bundle exec jekyll build  # Build your Jekyll site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4  # Updated to v4 (latest version)
+        uses: actions/upload-pages-artifact@v3
 
   # Deployment job
   deploy:
@@ -59,4 +47,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4  # Ensure you're using the latest version of deploy-pages action
+        uses: actions/deploy-pages@v4
