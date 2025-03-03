@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MCQ Review
-description: College Board Test 2015 Practice Exam MCQ
+description: College Board Test 2015 Practice Exam MCQ Review
 categories: ['Collegeboard']
 permalink: /collegeboard/mcq
 type: collab
