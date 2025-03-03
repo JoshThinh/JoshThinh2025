@@ -5,45 +5,11 @@ layout: page
 <!-- This inserts content from the page using this layout -->
 {{ content | markdownify }}
 
-<!-- Get all posts -->
-{% assign rawposts = site.posts %}
+{%- include post_review_blocks.html -%}
 
-<!-- Hide posts if front matter flag hide:true -->
-{% assign posts = '' | split:'' %}
-{% for post in rawposts %}
-  {% if post.hide != true %}
-    {% assign posts = posts | push: post %}
-  {% endif %}
-{% endfor %}
+{%- include post_collegeboard_blocks.html -%}
 
-<!-- Group posts by year and month -->
-{% assign posts_by_year = posts | group_by_exp: "post", "post.date | date: '%Y'" %}
-
-<!-- Create dropdown for each year -->
-<div class="year-dropdowns">
-  {% for year in posts_by_year %}
-  <div class="dropdown">
-    <button class="dropdown-btn">{{ year.name }}</button>
-    <div class="dropdown-content">
-      
-      <!-- Group posts by month within each year -->
-      {% assign posts_by_month = year.items | group_by_exp: "post", "post.date | date: '%B'" %}
-      
-      <!-- Display month titles and posts -->
-      {% for month in posts_by_month %}
-      <h3>{{ month.name }}</h3> <!-- Month title -->
-      <ul class="post-list">
-        {% for post in month.items %}
-        <li>
-          {%- include post_list_image_card.html -%}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endfor %}
-    </div>
-  </div>
-  {% endfor %}
-</div>
+{%- include post_pbl_blocks.html -%}
 
 <!-- Add styles matching theme -->
 <style>
