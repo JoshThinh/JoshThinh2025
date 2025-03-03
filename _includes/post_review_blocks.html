@@ -1,0 +1,26 @@
+{% if site.categories.size > 0 %}
+<h2>Reviews</h2>
+
+<ul>
+  <!-- Loop through all categories -->
+  {% for category in site.categories %}
+    <!-- Check if the category name includes "Tech" -->
+    {% if category[0] contains "Review" %}
+      <li>
+        <h3>{{ category[0] }}</h3> <!-- Display category name -->
+
+        <ul>
+          <!-- Loop through posts in each category -->
+          {% for post in category[1] %}
+            <li>
+              <a class="page-meta" href="{{ site.baseurl }}{{ post.url }}"> {{post.title}}</a>  
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% else %}
+<p>No categories found.</p>
+{% endif %}
