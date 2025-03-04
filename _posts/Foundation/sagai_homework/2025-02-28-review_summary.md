@@ -12,7 +12,16 @@ comments: True
 
 ## Summary
 
-- initialized data in the College Board review page adding information about each subject container
+- initialized data in the College Board review page adding information about each subject
+![test]({{ site.baseurl }}/images/initialized.png)
+
 - Made the UI for each subject look more appealing and easy to read (referencing the search page)
-- Cleaned up UI changing QNA to College Board Review and deleting unnecessary text
-- Fixed way of thinking when committing to ensure I have more pr commits that aren't useless to show that - you're applying yourself(Cleaning up code, adding features)
+
+- Cleaned up UI changing QNA to College Board Review deleting unnecessary text like the date and fixed delete function
+![test]({{ site.baseurl }}/images/UIReviewpage.png)
+
+- committed more to ensure I have more pr commits and made sure they aren't useless to show that I'm applying myself(Cleaning up code, adding features)
+![test]({{ site.baseurl }}/images/analytics.png)
+
+- made burndown list of things I need to do and I constantly add on to it as I get feedback(especially from N@TM)<br>
+[Issue to TODO list](https://github.com/JoshThinh/JoshThinh2025/issues/9)
