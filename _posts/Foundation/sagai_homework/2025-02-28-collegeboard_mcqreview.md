@@ -8,7 +8,18 @@ type: collab
 comments: True
 ---
 
-## MCA Review
+## MCQ Reflection
+I struggled the most with arrays and 2D arrays in the 2015 CSA multiple-choice questions, so I know I need to focus on improving in this area.
+
+To get better, I’ll start by reviewing the basics of arrays: how they’re declared, initialized, and accessed. I often mix up the indexing, so I plan to practice with smaller examples to strengthen my understanding.
+
+I also want to work on how I loop through arrays, especially 2D arrays. I’ll focus on correctly handling the row and column indexing and practice basic operations like summing elements or searching for values.
+
+Instead of jumping into complex problems, I’ll break them down into simpler parts. I’ll solve smaller problems first and build up to the bigger ones.
+
+By practicing more and reviewing my mistakes, I’m confident I can improve my understanding of arrays and 2D arrays.
+
+## MCQ Review
 Here is the Review of the 2015 Practice Exam MCQ [test link](https://apclassroom.collegeboard.org/8/assessments/results/63893231/performance/537990)
 
 ### Array
