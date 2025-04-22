@@ -2,7 +2,7 @@
 layout: post
 title: ArrayList - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand ArrayLists in Java.
-permalink: /CSA/Final/Exam/arraylist
+permalink: /CSA/Final/Exam/arraylist/
 type: collab
 comment: true
 ---

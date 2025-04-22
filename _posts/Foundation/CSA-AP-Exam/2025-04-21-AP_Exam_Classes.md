@@ -2,7 +2,7 @@
 layout: post
 title: Writing Classes - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand writing classes in Java.
-permalink: /CSA/Final/Exam/writing-classes
+permalink: /CSA/Final/Exam/writing-classes/
 type: collab
 comment: true
 ---

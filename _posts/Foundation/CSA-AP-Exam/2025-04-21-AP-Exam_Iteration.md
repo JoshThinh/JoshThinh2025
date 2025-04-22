@@ -2,7 +2,7 @@
 layout: post
 title: Iteration - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand iteration in Java.
-permalink: /CSA/Final/Exam/iteration
+permalink: /CSA/Final/Exam/iteration/
 type: collab
 comment: true
 ---

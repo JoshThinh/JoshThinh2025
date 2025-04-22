@@ -2,7 +2,7 @@
 layout: post
 title: 2D Arrays - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand 2D arrays in Java.
-permalink: /CSA/Final/Exam/2d-array
+permalink: /CSA/Final/Exam/2d-array/
 type: collab
 comment: true
 ---

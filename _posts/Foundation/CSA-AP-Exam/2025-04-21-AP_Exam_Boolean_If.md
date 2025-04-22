@@ -2,7 +2,7 @@
 layout: post
 title: Boolean Expressions and If Statements - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand Boolean expressions and if statements in Java.
-permalink: /CSA/Final/Exam/boolean-expressions
+permalink: /CSA/Final/Exam/boolean-expressions/
 type: collab
 comment: true
 ---

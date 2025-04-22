@@ -2,7 +2,7 @@
 layout: post
 title: Inheritance - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand inheritance in Java.
-permalink: /CSA/Final/Exam/inheritance
+permalink: /CSA/Final/Exam/inheritance/
 type: collab
 comment: true
 ---

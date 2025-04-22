@@ -2,7 +2,7 @@
 layout: post
 title: Arrays - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand arrays in Java.
-permalink: /CSA/Final/Exam/array
+permalink: /CSA/Final/Exam/array/
 type: collab
 comment: true
 ---

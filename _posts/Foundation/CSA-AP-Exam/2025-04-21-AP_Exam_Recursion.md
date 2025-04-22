@@ -2,7 +2,7 @@
 layout: post
 title: Recursion - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand recursion in Java.
-permalink: /CSA/Final/Exam/recursion
+permalink: /CSA/Final/Exam/recursion/
 type: collab
 comment: true
 ---

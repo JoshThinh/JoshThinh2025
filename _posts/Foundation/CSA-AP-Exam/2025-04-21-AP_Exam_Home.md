@@ -2,7 +2,7 @@
 layout: post
 title: AP CSA Exam Home
 description: Home page to access all material for the AP CSA Final Exam
-permalink: /CSA/Final/Exam/Home
+permalink: /CSA/Final/Exam/Home/
 type: collab
 comment: true
 ---

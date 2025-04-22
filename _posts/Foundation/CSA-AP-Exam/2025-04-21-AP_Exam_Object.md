@@ -2,7 +2,7 @@
 layout: post
 title: Using Objects - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand object usage in Java.
-permalink: /CSA/Final/Exam/using-objects
+permalink: /CSA/Final/Exam/using-objects/
 type: collab
 comment: true
 ---

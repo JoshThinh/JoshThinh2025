@@ -2,7 +2,7 @@
 layout: post
 title: Primitive Types - Practice Problems and Corrections
 description: Practice problems with failed attempts and detailed corrections to help understand primitive types in Java.
-permalink: /CSA/Final/Exam/primitive-types
+permalink: /CSA/Final/Exam/primitive-types/
 type: collab
 comment: true
 ---
