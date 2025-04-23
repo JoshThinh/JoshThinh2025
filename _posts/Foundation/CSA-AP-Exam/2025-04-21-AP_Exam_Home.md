@@ -64,7 +64,7 @@ comment: true
   </div>
 </div>
 
-## College Board FRQs
+## College Board Tests
 <!-- Search Bar for College Board FRQs -->
 <div class="mt-6 mb-4">
   <input 
