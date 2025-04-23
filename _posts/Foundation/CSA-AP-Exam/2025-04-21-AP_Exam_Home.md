@@ -8,7 +8,8 @@ comment: true
 ---
 
 ## Units 1-10
-<!-- Search Bar -->
+
+<!-- Search Bar for Main Topics -->
 <div class="mb-4">
   <input 
     type="text" 
@@ -35,6 +36,62 @@ comment: true
   </div>
 </div>
 
+## Enactment
+<!-- Second Search Bar for FRQs -->
+<div class="mt-6 mb-4">
+  <input 
+    type="text" 
+    id="searchBarFRQ" 
+    placeholder="Search FRQs..." 
+    class="w-full px-4 py-2 border border-gray-300 rounded"
+    onkeyup="filterFRQs()"
+  />
+</div>
+
+<!-- Scrollable Button Row for FRQs -->
+<div class="overflow-x-auto">
+  <div class="flex flex-nowrap space-x-2 pb-2" id="frqContainer">
+    {% assign frqTopics = "Insertion & Selection FRQ,Merge FRQ,Collectibles FRQ" | split: "," %}
+    {% assign frqLinks = "insertion-selection-frq,merge-frq,collectibles-frq" | split: "," %}
+    {% for topic in frqTopics %}
+      <a 
+        href="/JoshThinh2025/CSA/Final/Exam/{{ frqLinks[forloop.index0] }}/" 
+        class="inline-flex bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded frq-btn whitespace-nowrap"
+      >
+        {{ topic }}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+## College Board FRQs
+<!-- Search Bar for College Board FRQs -->
+<div class="mt-6 mb-4">
+  <input 
+    type="text" 
+    id="searchBarCBFRQ" 
+    placeholder="Search College Board FRQs..." 
+    class="w-full px-4 py-2 border border-gray-300 rounded"
+    onkeyup="filterCBFRQs()"
+  />
+</div>
+
+<!-- Scrollable Button Row for College Board FRQs -->
+<div class="overflow-x-auto">
+  <div class="flex flex-nowrap space-x-2 pb-2" id="cbFrqContainer">
+    {% assign cbfrqTopics = "FRQ Overview,College Board FRQ" | split: "," %}
+    {% assign cbfrqLinks = "FRQ-Overview,college-frq" | split: "," %}
+    {% for topic in cbfrqTopics %}
+      <a 
+        href="/JoshThinh2025/CSA/Final/Exam/{{ cbfrqLinks[forloop.index0] }}/" 
+        class="inline-flex bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded cbfrq-btn whitespace-nowrap"
+      >
+        {{ topic }}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
 <script>
 function filterSubjects() {
   const input = document.getElementById('searchBar').value.toLowerCase();
@@ -44,7 +101,26 @@ function filterSubjects() {
     btn.style.display = text.includes(input) ? 'inline-flex' : 'none';
   }
 }
+
+function filterFRQs() {
+  const input = document.getElementById('searchBarFRQ').value.toLowerCase();
+  const buttons = document.getElementsByClassName('frq-btn');
+  for (let btn of buttons) {
+    const text = btn.innerText.toLowerCase();
+    btn.style.display = text.includes(input) ? 'inline-flex' : 'none';
+  }
+}
+
+function filterCBFRQs() {
+  const input = document.getElementById('searchBarCBFRQ').value.toLowerCase();
+  const buttons = document.getElementsByClassName('cbfrq-btn');
+  for (let btn of buttons) {
+    const text = btn.innerText.toLowerCase();
+    btn.style.display = text.includes(input) ? 'inline-flex' : 'none';
+  }
+}
 </script>
+
 
 ---
 
