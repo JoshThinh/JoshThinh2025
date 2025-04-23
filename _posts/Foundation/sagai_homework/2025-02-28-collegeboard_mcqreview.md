@@ -1,14 +1,13 @@
 ---
 layout: post
-title: MCQ Review
-description: College Board Test 2015 Practice Exam MCQ Review
-categories: ['Collegeboard']
-permalink: /collegeboard/mcq
+title: FRQ Review
+description: FRQ Review
+permalink: /CSA/Final/Exam/2015-mcq/
 type: collab
 comments: True
 ---
 
-## MCQ Reflection
+## MCQ Reflection 2015
 I struggled the most with arrays and 2D arrays in the 2015 CSA multiple-choice questions, so I know I need to focus on improving in this area.
 
 To get better, I’ll start by reviewing the basics of arrays: how they’re declared, initialized, and accessed. I often mix up the indexing, so I plan to practice with smaller examples to strengthen my understanding.

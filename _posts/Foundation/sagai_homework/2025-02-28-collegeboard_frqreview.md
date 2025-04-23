@@ -2,13 +2,12 @@
 layout: post
 title: FRQ Review
 description: FRQ Review
-categories: ['Collegeboard']
-permalink: /collegeboard/frq
+permalink: /CSA/Final/Exam/2015-frq/
 type: collab
 comments: True
 ---
 
-## FRQ Review
+## FRQ 2015
 
 ### Question 1 Answers
 #### Part A
