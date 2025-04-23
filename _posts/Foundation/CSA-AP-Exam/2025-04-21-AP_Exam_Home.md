@@ -80,7 +80,7 @@ comment: true
 <div class="overflow-x-auto">
   <div class="flex flex-nowrap space-x-2 pb-2" id="cbFrqContainer">
     {% assign cbfrqTopics = "FRQ Overview,2020 FRQ, 2015 FRQ, 2015 MCQ" | split: "," %}
-    {% assign cbfrqLinks = "FRQ-Overview,college-frq,2015-frq, 2015-mcq" | split: "," %}
+    {% assign cbfrqLinks = "FRQ-Overview,college-frq,2015-frq,2015-mcq" | split: "," %}
     {% for topic in cbfrqTopics %}
       <a 
         href="/JoshThinh2025/CSA/Final/Exam/{{ cbfrqLinks[forloop.index0] }}/" 
