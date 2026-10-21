@@ -1,7 +1,7 @@
 github: [metadata]
 
-title: Nighthawk Pages 
-description: "Class of 2025"
+title: Joshua Thinh
+description: "Computer science student at San Diego State University. Computer vision, full-stack web apps, and systems."
 owner_name: Joshua Thinh
 github_username: JoshThinh
 github_repo: "JoshThinh2025" 
@@ -32,3 +32,14 @@ header_pages:
   - navigation/csatri2final.md
   - navigation/CSAFinal.md
   
+
+exclude:
+  - _to_delete
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+  - requirements.txt
+  - scripts
+  - node_modules
+  - vendor
+  - .vscode

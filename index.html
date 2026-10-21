@@ -1,0 +1,459 @@
+---
+layout: null
+title: Joshua Thinh
+permalink: /
+search_exclude: true
+---
+{%- assign resume_file = site.static_files | where: "path", "/assets/Joshua_Thinh_Resume.pdf" | first -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joshua Thinh, software engineer</title>
+  <meta name="description" content="Joshua (Jo) Thinh is a computer science student at San Diego State University building computer vision models and full-stack web apps.">
+  <meta property="og:title" content="Joshua Thinh, software engineer">
+  <meta property="og:description" content="CS student at San Diego State. Computer vision intern at Brevvie. Builder of web apps people actually use.">
+  <link rel="icon" href="{{ site.baseurl }}/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F2F4F1;
+      --ink: #18212C;
+      --muted: #56606C;
+      --rule: #D2D8D3;
+      --box: #1F4FE0;
+      --box-ink: #FFFFFF;
+      --chip: #E3E8E4;
+      --max: 1080px;
+      --gutter: clamp(16px, 4vw, 40px);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: #10151C;
+        --ink: #E7EBEF;
+        --muted: #9AA4AF;
+        --rule: #2A333E;
+        --box: #7EA0FF;
+        --box-ink: #0D1422;
+        --chip: #1C242E;
+      }
+    }
+    :root[data-theme="dark"] {
+      --paper: #10151C;
+      --ink: #E7EBEF;
+      --muted: #9AA4AF;
+      --rule: #2A333E;
+      --box: #7EA0FF;
+      --box-ink: #0D1422;
+      --chip: #1C242E;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration-color: var(--box); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+    a:hover { color: var(--box); }
+    :focus-visible { outline: 3px solid var(--box); outline-offset: 3px; border-radius: 2px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* Header */
+    .top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 0; }
+    .top .mark { white-space: nowrap; font-weight: 700; text-decoration: none; letter-spacing: -0.01em; }
+    .top nav { display: flex; gap: clamp(14px, 3vw, 28px); font-size: 0.95rem; flex-wrap: wrap; }
+    .top nav a { text-decoration: none; color: var(--muted); }
+    .top nav a:hover { color: var(--ink); }
+
+    /* Detection box motif */
+    .bbox { position: relative; display: inline-block; }
+    .bbox::before, .bbox::after,
+    .bbox > .c1, .bbox > .c2 {
+      content: ""; position: absolute; width: 22px; height: 22px; border: 0 solid var(--box);
+      pointer-events: none;
+    }
+    .bbox::before { top: 0; left: 0; border-top-width: 3px; border-left-width: 3px; }
+    .bbox::after { top: 0; right: 0; border-top-width: 3px; border-right-width: 3px; }
+    .bbox > .c1 { bottom: 0; left: 0; border-bottom-width: 3px; border-left-width: 3px; }
+    .bbox > .c2 { bottom: 0; right: 0; border-bottom-width: 3px; border-right-width: 3px; }
+    .tag {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 0.78rem; font-weight: 500;
+      background: var(--box); color: var(--box-ink);
+      padding: 3px 8px; white-space: nowrap;
+    }
+
+    /* Hero */
+    .hero { padding: clamp(40px, 9vw, 110px) 0 clamp(48px, 8vw, 96px); }
+    .hero .bbox { padding: clamp(14px, 2.4vw, 26px) clamp(16px, 3vw, 34px); margin-left: calc(-1 * clamp(16px, 3vw, 34px)); }
+    .hero .tag { position: absolute; left: 0; top: -1.7em; }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(3rem, 11vw, 7.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+      font-weight: 800;
+    }
+    .hero .lede { max-width: 36em; margin: 36px 0 0; font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.5; }
+    .hero .lede strong { font-weight: 600; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 16px; border: 1.5px solid var(--ink); text-decoration: none;
+      font-weight: 600; font-size: 0.95rem;
+    }
+    .btn.primary { background: var(--ink); color: var(--paper); }
+    .btn:hover { border-color: var(--box); color: var(--box); }
+    .btn.primary:hover { background: var(--box); color: var(--box-ink); }
+    .btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* Load moment: the box locks onto the name */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero .bbox::before, .hero .bbox::after, .hero .bbox > .c1, .hero .bbox > .c2 {
+        animation: lock 0.7s cubic-bezier(.2,.8,.2,1) 0.15s both;
+      }
+      .hero .bbox::before { --dx: -18px; --dy: -18px; }
+      .hero .bbox::after { --dx: 18px; --dy: -18px; }
+      .hero .bbox > .c1 { --dx: -18px; --dy: 18px; }
+      .hero .bbox > .c2 { --dx: 18px; --dy: 18px; }
+      .hero .tag { animation: tagin 0.3s ease-out 0.8s both; }
+      @keyframes lock {
+        from { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+        to { transform: none; opacity: 1; }
+      }
+      @keyframes tagin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    }
+
+    /* Sections */
+    section { padding: clamp(44px, 7vw, 80px) 0; border-top: 1.5px solid var(--ink); }
+    .sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
+    .sec-head h2 { margin: 0; font-size: 1.05rem; font-weight: 700; letter-spacing: -0.005em; }
+    .sec-head .intro { margin: 0; color: var(--muted); max-width: 40em; }
+    .sec-body { display: grid; grid-template-columns: 220px 1fr; gap: 24px; margin-top: 28px; }
+    .sec-body > .main { grid-column: 2; min-width: 0; }
+
+    /* Experience */
+    .job h3 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.02em; line-height: 1.15; }
+    .job .meta { color: var(--muted); margin: 6px 0 0; }
+    .impact {
+      margin: 26px 0; padding: 18px 20px; border-left: 4px solid var(--box); background: var(--chip);
+      font-size: 1.15rem; line-height: 1.45; max-width: 38em;
+    }
+    .job ul { margin: 0; padding-left: 1.1em; max-width: 42em; }
+    .job li { margin: 0 0 10px; }
+    .job li::marker { color: var(--box); }
+
+    /* Projects */
+    .projects { list-style: none; margin: 0; padding: 0; }
+    .project {
+      position: relative;
+      display: grid; grid-template-columns: 220px 1fr; gap: 24px;
+      padding: 30px 0; border-top: 1px solid var(--rule);
+    }
+    .project:first-child { border-top: 0; padding-top: 6px; }
+    .project .when { color: var(--muted); font-size: 0.95rem; }
+    .project .when span { display: block; }
+    .project h3 { margin: 0 0 8px; font-size: 1.45rem; letter-spacing: -0.02em; line-height: 1.2; }
+    .project p { margin: 0 0 12px; max-width: 40em; }
+    .project .built { margin: 0 0 14px; padding-left: 1.1em; max-width: 40em; color: var(--ink); }
+    .project .built li { margin-bottom: 6px; }
+    .project .built li::marker { color: var(--box); }
+    .stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+    .stack li { background: var(--chip); padding: 2px 10px; font-size: 0.85rem; color: var(--muted); }
+    .links { display: flex; flex-wrap: wrap; gap: 18px; font-weight: 600; font-size: 0.95rem; }
+    .status { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--box); margin-left: 8px; vertical-align: 3px; }
+    /* Hover: the detection box finds the project you point at */
+    .project .bbox-hit { position: absolute; inset: 14px -14px 14px -14px; opacity: 0; transition: opacity .15s; pointer-events: none; }
+    .project:first-child .bbox-hit { top: -8px; }
+    .project:hover .bbox-hit, .project:focus-within .bbox-hit { opacity: 1; }
+    .bbox-hit .tag { position: absolute; top: -1.55em; right: 0; }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px 32px; }
+    .skills h3 { margin: 0 0 8px; font-size: 1rem; }
+    .skills p { margin: 0; color: var(--muted); }
+
+    /* Education */
+    .school { margin-bottom: 30px; }
+    .school h3 { margin: 0; font-size: 1.3rem; letter-spacing: -0.015em; }
+    .school .meta { color: var(--muted); margin: 4px 0 10px; }
+    .school p { margin: 0 0 8px; max-width: 40em; }
+
+    /* Contact */
+    .contact .big { font-size: clamp(2rem, 6vw, 3.6rem); letter-spacing: -0.035em; line-height: 1; margin: 0 0 18px; font-weight: 800; }
+    .contact p { max-width: 34em; margin: 0 0 24px; }
+    .contact .big { max-width: 14em; }
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: 0.9rem; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .theme-btn { background: none; border: 1px solid var(--rule); color: var(--muted); font: inherit; padding: 4px 10px; cursor: pointer; }
+    .theme-btn:hover { color: var(--ink); border-color: var(--ink); }
+
+    @media (max-width: 760px) {
+      .sec-head, .sec-body, .project { grid-template-columns: 1fr; gap: 10px; }
+      .sec-body > .main { grid-column: 1; }
+      .project .when span { display: inline; }
+      .project .when span + span::before { content: ", "; }
+      .project .bbox-hit { display: none; }
+      .hero .bbox { margin-left: 0; }
+      .top nav { gap: 14px; }
+    }
+    @media print {
+      .top nav, .theme-btn, .bbox-hit { display: none; }
+      section { break-inside: avoid; }
+    }
+  </style>
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="{{ site.baseurl }}/">Jo Thinh</a>
+      <nav aria-label="Sections">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div class="bbox">
+          <span class="tag" aria-hidden="true">software_engineer 0.97</span>
+          <h1>Joshua<br>Thinh</h1>
+          <span class="c1"></span><span class="c2"></span>
+        </div>
+        <p class="lede">
+          I'm a computer science student at <strong>San Diego State University</strong>.
+          This summer I trained a computer vision model at <strong>Brevvie</strong> that's now rolling out to
+          hundreds of propane-exchange lockers across the US. Outside of work I build web apps for the people around me:
+          a ride sign-up system for my church and a photo booth for a friend's wedding.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See my projects</a>
+          {%- if resume_file %}
+          <a class="btn" href="{{ site.baseurl }}/assets/Joshua_Thinh_Resume.pdf">Download résumé</a>
+          {%- endif %}
+          <a class="btn" href="https://github.com/JoshThinh" rel="me">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/joshua-thinh" rel="me">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.18 0h13.64C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.18 1.15H1.18C.52 16 0 15.48 0 14.85V1.15zm4.94 12.24V6.17H2.53v7.22h2.41zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.35-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.02zm4.93 8.21V9.36c0-.22.02-.43.08-.59.18-.43.57-.88 1.23-.88.87 0 1.22.66 1.22 1.64v3.86h2.41V9.25c0-2.22-1.19-3.25-2.77-3.25-1.28 0-1.84.7-2.16 1.2v.03h-.02l.02-.03V6.17H6.26c.03.68 0 7.22 0 7.22h2.41z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <section id="experience" aria-labelledby="experience-h">
+        <div class="sec-head">
+          <h2 id="experience-h">Experience</h2>
+        </div>
+        <div class="sec-body">
+          <div class="main job">
+            <h3>Software Engineering Intern, Brevvie</h3>
+            <p class="meta">Summer 2026 to present</p>
+            <p class="impact">
+              Trained the computer vision model that checks what customers put into Brevvie's propane-exchange lockers.
+              It classifies each tank as steel, composite, or no tank, and it's now rolling out to hundreds of lockers across the US.
+            </p>
+            <ul>
+              <li>Now designing a cylinder validation step for unattended machines: the customer photographs the tank, the photo is checked by the model, and the exchange continues only if it passes. The feature is switched on per customer through a config flag.</li>
+              <li>Planned the pipeline around it: photos stored per order in S3, inference triggered through a queue, a human-review queue that feeds a weekly retraining cycle, and a three-attempt limit before an automatic refund.</li>
+              <li>Worked on the system's sign-in and logging.</li>
+            </ul>
+            <ul class="stack" aria-label="Tools used" style="margin-top:18px">
+              <li>Computer vision</li><li>Python</li><li>Rust</li><li>AWS S3</li><li>SQS</li><li>Lambda</li><li>DynamoDB</li><li>ECS Fargate</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-h">
+        <div class="sec-head">
+          <h2 id="projects-h">Projects</h2>
+          <p class="intro">Things I've built on my own, in clubs, and in class. Most of them started because someone I know had a real problem.</p>
+        </div>
+        <div class="sec-body">
+          <ol class="projects main" style="grid-column:1 / -1">
+            <li class="project">
+              <div class="bbox-hit bbox" aria-hidden="true"><span class="tag">web_app 0.99</span><span class="c1"></span><span class="c2"></span></div>
+              <div class="when"><span>2026</span><span>Personal project</span></div>
+              <div>
+                <h3>Church Rides</h3>
+                <p>Rides to church used to get sent out the night before. I built a sign-up site so riders can sign up during the week and drivers know who they're picking up ahead of time.</p>
+                <ul class="built">
+                  <li>Riders enter their name, pick a pickup location, and choose from that day's drivers.</li>
+                  <li>Drivers get an organized pickup list instead of a wall of messages.</li>
+                  <li>Once rides are set, it creates a Messenger group chat and sends automated pickup and drop-off messages.</li>
+                </ul>
+                <ul class="stack" aria-label="Built with"><li>JavaScript</li><li>HTML/CSS</li><li>Supabase (Postgres)</li></ul>
+              </div>
+            </li>
+
+            <li class="project">
+              <div class="bbox-hit bbox" aria-hidden="true"><span class="tag">web_app 0.98</span><span class="c1"></span><span class="c2"></span></div>
+              <div class="when"><span>2026</span><span>Personal project</span></div>
+              <div>
+                <h3>Wedding Photo Booth</h3>
+                <p>A photo booth web app for a friend's wedding. Guests scan a QR code, take photos on their own phones, and the pictures show up in a shared gallery.</p>
+                <ul class="built">
+                  <li>Camera capture in the browser, with a polaroid-style live gallery.</li>
+                  <li>QR code generation so guests can join without installing anything.</li>
+                  <li>An admin panel, plus an animated slideshow that exports to video.</li>
+                  <li>Fixed cross-origin canvas errors, missing storage delete policies, and video format compatibility across phones.</li>
+                </ul>
+                <ul class="stack" aria-label="Built with"><li>JavaScript</li><li>Canvas API</li><li>Supabase Storage</li><li>GitHub Pages</li></ul>
+                <div class="links"><a href="https://github.com/JoshThinh/WeddingPhoto">Code on GitHub</a></div>
+              </div>
+            </li>
+
+            <li class="project">
+              <div class="bbox-hit bbox" aria-hidden="true"><span class="tag">vision_model 0.94</span><span class="c1"></span><span class="c2"></span></div>
+              <div class="when"><span>2026</span><span>SDSU AI Club</span></div>
+              <div>
+                <h3>Smart Waste Sorter<span class="status">In progress</span></h3>
+                <p>A vision model that looks at an item someone is about to throw away and tells them whether it goes in recycling or trash.</p>
+                <ul class="built">
+                  <li>Started from an existing YOLO dataset and expanded it with a training set we created ourselves.</li>
+                  <li>Connected to a camera so it can classify items as they're held up.</li>
+                </ul>
+                <ul class="stack" aria-label="Built with"><li>YOLO</li><li>Python</li><li>Dataset labeling</li></ul>
+              </div>
+            </li>
+
+            <li class="project">
+              <div class="bbox-hit bbox" aria-hidden="true"><span class="tag">full_stack 0.96</span><span class="c1"></span><span class="c2"></span></div>
+              <div class="when"><span>2024–2025</span><span>Open Coding Society</span></div>
+              <div>
+                <h3>Coding Society peer-teaching platform</h3>
+                <p>A platform where students teach lessons to each other and review each other's work, built by a student team over the school year using Agile sprints.</p>
+                <ul class="built">
+                  <li>Worked on both the frontend and backend, and led the frontend for the Team Teach Toolkit review page.</li>
+                  <li>Designed the interface with the UI/UX team and connected it to the assignment tools teachers already used.</li>
+                </ul>
+                <ul class="stack" aria-label="Built with"><li>JavaScript</li><li>Java Spring Boot</li><li>Flask</li><li>Postman</li><li>AWS</li></ul>
+                <div class="links">
+                  <a href="https://nighthawkcoders.github.io/portfolio_2025/student/TeamTeachToolkit/review">See the review page</a>
+                  <a href="{{ site.baseurl }}/pbl/demo">Architecture diagrams</a>
+                </div>
+              </div>
+            </li>
+
+            <li class="project">
+              <div class="bbox-hit bbox" aria-hidden="true"><span class="tag">low_level 0.95</span><span class="c1"></span><span class="c2"></span></div>
+              <div class="when"><span>2026</span><span>SDSU coursework</span></div>
+              <div>
+                <h3>Games in MIPS assembly</h3>
+                <p>Graphical games written in MIPS assembly and drawn pixel by pixel on the MARS bitmap display.</p>
+                <ul class="built">
+                  <li>Tic-tac-toe: game state kept in arrays, separate procedures following stack calling conventions, and handling for invalid moves.</li>
+                  <li>Blackjack with chips and betting, now in progress. Sudoku is next.</li>
+                </ul>
+                <ul class="stack" aria-label="Built with"><li>MIPS assembly</li><li>MARS</li></ul>
+              </div>
+            </li>
+
+            <li class="project">
+              <div class="bbox-hit bbox" aria-hidden="true"><span class="tag">game 0.91</span><span class="c1"></span><span class="c2"></span></div>
+              <div class="when"><span>2024</span><span>High school</span></div>
+              <div>
+                <h3>Browser games</h3>
+                <p>My first projects: a passcode puzzle game with a timer and a canvas car-racing game, both playable on this site.</p>
+                <ul class="stack" aria-label="Built with"><li>JavaScript</li><li>HTML Canvas</li></ul>
+                <div class="links">
+                  <a href="{{ site.baseurl }}/game/">Play the puzzle game</a>
+                  <a href="{{ site.baseurl }}/cargame/">Play the racing game</a>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-h">
+        <div class="sec-head"><h2 id="skills-h">Skills</h2></div>
+        <div class="sec-body">
+          <div class="main skills">
+            <div><h3>Languages</h3><p>C++, Java, JavaScript, HTML/CSS, Python, Rust, SQL, MIPS assembly</p></div>
+            <div><h3>Backend and cloud</h3><p>Supabase, Firebase, Spring Boot, Flask, AWS (S3, Lambda, SQS, DynamoDB, ECS Fargate)</p></div>
+            <div><h3>Machine learning</h3><p>Image classification and object detection, YOLO, building and labeling training datasets</p></div>
+            <div><h3>Tools and practice</h3><p>Git and GitHub, GitHub Pages, Postman, VS Code, Agile sprints and code review</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" aria-labelledby="education-h">
+        <div class="sec-head"><h2 id="education-h">Education</h2></div>
+        <div class="sec-body">
+          <div class="main">
+            <div class="school">
+              <h3>San Diego State University</h3>
+              <p class="meta">B.S. Computer Science, minor in AI &amp; Human Responsibility. Expected May 2029. GPA 3.6</p>
+              <p>Coursework: Data Structures (CS 210, in progress), Discrete Mathematics, MIPS assembly programming, and CS 150, 160 and 240.</p>
+            </div>
+            <div class="school">
+              <h3>Del Norte High School</h3>
+              <p class="meta">Class of 2025</p>
+              <p>AP Computer Science A and AP Computer Science Principles, taught through the Open Coding Society's project-based program. My class notes, AP exam prep and final reviews are still here:
+                <a href="{{ site.baseurl }}/blogs/">coursework archive</a>,
+                <a href="{{ site.baseurl }}/CSAFinal/">AP CSA final review</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact" aria-labelledby="contact-h">
+        <div class="sec-head"><h2 id="contact-h">Contact</h2></div>
+        <div class="sec-body">
+          <div class="main">
+            <p class="big">Looking for a software engineering internship.</p>
+            <p>I'm interested in backend, full-stack and applied ML roles. The fastest way to reach me is email.</p>
+            <div class="actions">
+              <a class="btn primary" href="mailto:joshua.thinh@gmail.com">Email joshua.thinh@gmail.com</a>
+              <a class="btn" href="https://www.linkedin.com/in/joshua-thinh">LinkedIn</a>
+              <a class="btn" href="https://github.com/JoshThinh">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Joshua Thinh, San Diego</span>
+      <button class="theme-btn" type="button" id="theme-btn">Switch to dark</button>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var btn = document.getElementById("theme-btn");
+      var root = document.documentElement;
+      function current() {
+        var set = root.getAttribute("data-theme");
+        if (set) return set;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      function label() { btn.textContent = current() === "dark" ? "Switch to light" : "Switch to dark"; }
+      btn.addEventListener("click", function () {
+        var next = current() === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        label();
+      });
+      label();
+    })();
+  </script>
+</body>
+</html>

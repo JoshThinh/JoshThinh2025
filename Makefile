@@ -2,6 +2,8 @@
 PORT ?= 4100
 REPO_NAME ?= JoshThinh2025
 LOG_FILE = /tmp/jekyll$(PORT).log
+# Use python3 (macOS has no plain "python"); prefer the project venv if it exists
+PYTHON ?= $(shell if [ -x venv/bin/python ]; then echo venv/bin/python; else command -v python3 || command -v python; fi)
 
 SHELL = /bin/bash -c
 .SHELLFLAGS = -e # Exceptions will stop make, works on MacOS
@@ -67,7 +69,7 @@ convert: $(MARKDOWN_FILES)
 $(DESTINATION_DIRECTORY)/%_IPYNB_2_.md: _notebooks/%.ipynb
 	@echo "Converting source $< to destination $@"
 	@mkdir -p $(@D)
-	@python -c 'import sys; from scripts.convert_notebooks import convert_single_notebook; convert_single_notebook(sys.argv[1])' "$<"
+	@$(PYTHON) -c 'import sys; from scripts.convert_notebooks import convert_single_notebook; convert_single_notebook(sys.argv[1])' "$<"
 
 # Clean up project derived files, to avoid run issues stop is dependency
 clean: stop
